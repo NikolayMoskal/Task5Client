@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs';
 import {AppConfig} from '../../app.config';
-import {Client} from '../models/client';
 
 @Injectable()
-export class ClientService {
+export class BookingService {
   private headers = new HttpHeaders({
     'Content-Type': 'application/json'
   });
@@ -12,7 +12,7 @@ export class ClientService {
   constructor(private http: HttpClient) {
   }
 
-  async getAllClients(): Promise<Client[]> {
-    return this.http.get<Client[]>(AppConfig.APP_SERVER_URL + 'api/Client/All', {headers: this.headers}).toPromise();
+  getAllBookings(): Observable<any> {
+    return this.http.get(AppConfig.APP_SERVER_URL + '/api/Booking/All', {headers: this.headers});
   }
 }

@@ -1,6 +1,6 @@
 import {ClientService} from '../services/client.service';
-import {Client} from '../models/client';
 import {Component, OnInit} from '@angular/core';
+import {ChartConfig} from '../chart/chart.config';
 
 @Component({
   moduleId: module.id,
@@ -9,16 +9,16 @@ import {Component, OnInit} from '@angular/core';
   providers: [ClientService]
 })
 export class HomeComponent implements OnInit {
-  clients: Client[];
 
-  constructor(private clientService: ClientService) {
+  data: any[];
+  config: ChartConfig;
+  element: string;
+
+  constructor() {
   }
 
-  ngOnInit(): void {
-    this.clientService.getAllClients().subscribe(
-      (data: Client[]) => {
-        this.clients = data;
-      }
-    );
+  async ngOnInit() {
+    this.config = new ChartConfig('Статистика количества заказов на клиента', 0.4);
+    this.element = 'chart1';
   }
 }

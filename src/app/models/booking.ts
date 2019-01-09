@@ -5,7 +5,7 @@ import {ModelBase} from './model.base';
 
 export class Booking extends ModelBase {
   date: Date;
-  client: Client;
-  employee: Employee;
-  product: Product;
+  client?: Client;
+  employee?: Employee;
+  product?: Product;
 }

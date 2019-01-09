@@ -1,5 +1,3 @@
 <div>
-  <ul>
-    <li *ngFor="let item of clients">{{item.name}}</li>
-  </ul>
+  <app-chart [config]="config" [data]="data" [elementId]="element"></app-chart>
 </div>

@@ -6,11 +6,14 @@ import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
 import {ClientService} from './services/client.service';
 import {HttpClientModule} from '@angular/common/http';
+import {ChartComponent} from './chart/chart.component';
+import {ChartService} from './services/chart.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +21,8 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
-    ClientService
+    ClientService,
+    ChartService
   ],
   bootstrap: [
     AppComponent
