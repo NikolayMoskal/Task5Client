@@ -1,0 +1,57 @@
+<div class="col-md col-md-offset-3">
+  <h2>Регистрация нового пользователя</h2>
+  <form #f="ngForm" (ngSubmit)="f.form.valid && signUp()" name="form" novalidate>
+    <div [ngClass]="{ 'has-error': f.submitted && !first.valid }" class="form-group">
+      <label>
+        Настоящее имя <span class="badge badge-danger">Обязательное поле</span>
+        <input #first="ngModel" [(ngModel)]="user.firstName" class="form-control" name="firstName" required
+               type="text"/>
+      </label>
+    </div>
+    <div [ngClass]="{ 'has-error': f.submitted && !last.valid }" class="form-group">
+      <label>
+        Фамилия <span class="badge badge-danger">Обязательное поле</span>
+        <input #last="ngModel" [(ngModel)]="user.lastName" class="form-control" name="lastName" required type="text"/>
+      </label>
+    </div>
+    <div [ngClass]="{ 'has-error': f.submitted && !birth.valid }" class="form-group">
+      <label>
+        Дата рождения
+        <input #birth="ngModel" [(ngModel)]="user.birthDate" class="form-control" name="birth" type="date"/>
+      </label>
+      <span *ngIf="f.submitted && !birth.valid" class="badge badge-warning">Выберите дату</span>
+    </div>
+    <div [ngClass]="{ 'has-error': f.submitted && !username.valid }" class="form-group">
+      <label>
+        Имя пользователя <span class="badge badge-danger">Обязательное поле</span>
+        <input #username="ngModel" [(ngModel)]="account.userName" class="form-control" name="username" required
+               type="text"/>
+      </label>
+      <span *ngIf="f.submitted && !username.valid"
+            class="badge badge-warning">Имя пользователя не может быть пустым!</span>
+    </div>
+    <div [ngClass]="{ 'has-error': f.submitted && !password.valid }" class="form-group">
+      <label>
+        Пароль <span class="badge badge-danger">Обязательное поле</span>
+        <input #password="ngModel" [(ngModel)]="account.password" class="form-control" name="password" required
+               type="password"/>
+      </label>
+      <span *ngIf="f.submitted && !password.valid" class="badge badge-warning">Пароль не может быть пустым!</span>
+    </div>
+    <div [ngClass]="{ 'has-error': f.submitted && !dblpassword.valid }" class="form-group">
+      <label>
+        Подтверждение пароля <span class="badge badge-danger">Обязательное поле</span>
+        <input #dblpassword="ngModel" [(ngModel)]="confirmPassword" class="form-control" name="dblpassword"
+               required type="password"/>
+      </label>
+      <span *ngIf="f.submitted && !dblpassword.valid" class="badge badge-warning">Пароль не может быть пустым!</span>
+    </div>
+    <div class="form-group">
+      <button (click)="signUp()" [disabled]="loading" class="btn btn-primary">Регистрация</button>
+      <img *ngIf="loading"
+           alt="Loading"
+           src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+    </div>
+    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+  </form>
+</div>
