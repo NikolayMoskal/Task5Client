@@ -19,7 +19,7 @@ export class AuthService {
   }
 
   login(account: Account) {
-    return this.http.post(AppConfig.APP_SERVER_URL + '/api/Auth/Login', account, {headers: this.headers}).toPromise();
+    return this.http.post(AppConfig.APP_SERVER_URL + '/api/Auth/SignIn', account, {headers: this.headers}).toPromise();
   }
 
   getUserName(): string {

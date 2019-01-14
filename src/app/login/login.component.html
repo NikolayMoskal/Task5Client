@@ -7,7 +7,7 @@
     <div [ngClass]="{ 'has-error': f.submitted && !username.valid }" class="form-group">
       <label>
         Имя пользователя
-        <input #username="ngModel" [(ngModel)]="model.username" class="form-control" name="username" required
+        <input #username="ngModel" [(ngModel)]="account.userName" class="form-control" name="username" required
                type="text"/>
       </label>
       <span *ngIf="f.submitted && !username.valid"
@@ -16,13 +16,13 @@
     <div [ngClass]="{ 'has-error': f.submitted && !password.valid }" class="form-group">
       <label>
         Пароль
-        <input #password="ngModel" [(ngModel)]="model.password" class="form-control" name="password" required
+        <input #password="ngModel" [(ngModel)]="account.password" class="form-control" name="password" required
                type="password"/>
       </label>
       <span *ngIf="f.submitted && !password.valid" class="badge badge-warning">Пароль не может быть пустым!</span>
     </div>
     <div class="form-group">
-      <button [disabled]="loading" class="btn btn-primary">Войти</button>
+      <button [disabled]="loading" class="btn btn-primary mr-3">Войти</button>
       <button class="btn btn-primary" routerLink="/signup">Регистрация</button>
     </div>
     <div *ngIf="error" class="alert alert-danger">{{error}}</div>

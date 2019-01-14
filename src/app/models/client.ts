@@ -3,5 +3,5 @@ import {Booking} from './booking';
 
 export class Client extends ModelBase {
   name: string;
-  bookings: Booking[];
+  bookings?: Booking[];
 }

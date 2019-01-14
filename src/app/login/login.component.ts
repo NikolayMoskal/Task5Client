@@ -10,7 +10,7 @@ import {Account} from '../models/account';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  account: Account;
+  account: Account = new Account();
   loading = false;
   error = '';
 
@@ -28,11 +28,11 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.authService.login(this.account)
       .then(
-        (result: boolean) => {
+        (result: Account) => {
           if (result) {
             localStorage.setItem('currentUser', JSON.stringify({
-              username: this.account.userName,
-              role: this.account.role,
+              username: result.userName,
+              role: result.role.roleName,
               date: new Date().toString()
             }));
             this.router.navigate(['/']);

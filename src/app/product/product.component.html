@@ -1,0 +1,51 @@
+<div [hidden]="authService.isLoggedIn()" class="alert alert-info">
+  Зарегистрируйтесь, чтобы видеть статистику заказов
+</div>
+<div [hidden]="!authService.isLoggedIn()">
+  <h4>Фильтрация</h4>
+  <form>
+    <div class="form-group">
+      <label for="product-name">Название товара</label>
+      <input id="product-name" type="text" class="form-control" [(ngModel)]="testModel.name" name="productName"/>
+    </div>
+    <div class="form-group">
+      <label for="product-price">Цена товара</label>
+      <input id="product-price" type="number" class="form-control" [(ngModel)]="testModel.price" name="productPrice"/>
+    </div>
+    <button class="btn btn-success mb-3" (click)="filter()">Поиск</button>
+  </form>
+  <table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+    <tr>
+      <th>Товар</th>
+      <th>Цена товара</th>
+      <th>Заказы</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of products">
+      <td>{{item.name}}</td>
+      <td>{{item.price}}</td>
+      <td>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Дата заказа</th>
+            <th>Клиент</th>
+            <th>Менеджер</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let booking of item.bookings">
+            <td>{{booking.date}}</td>
+            <td>{{booking.client.name}}</td>
+            <td>{{booking.employee.name}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div [id]="element" style="width: 800px; height: 400px;"></div>
+</div>

@@ -12,7 +12,7 @@ export class ClientService {
   constructor(private http: HttpClient) {
   }
 
-  async getAllClients(): Promise<Client[]> {
-    return this.http.get<Client[]>(AppConfig.APP_SERVER_URL + 'api/Client/All', {headers: this.headers}).toPromise();
+  async getAllClients(filter?: Client): Promise<Client[]> {
+    return this.http.post<Client[]>(AppConfig.APP_SERVER_URL + 'api/Client/All', filter, {headers: this.headers}).toPromise();
   }
 }

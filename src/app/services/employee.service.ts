@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AppConfig} from '../../app.config';
-import {Booking} from '../models/booking';
+import {Employee} from '../models/employee';
 
 @Injectable()
-export class BookingService {
+export class EmployeeService {
   private headers = new HttpHeaders({
     'Content-Type': 'application/json'
   });
@@ -12,7 +12,7 @@ export class BookingService {
   constructor(private http: HttpClient) {
   }
 
-  async getAllBookings(filter?: Booking): Promise<Booking[]> {
-    return this.http.post<Booking[]>(AppConfig.APP_SERVER_URL + 'api/Booking/All', filter, {headers: this.headers}).toPromise();
+  async getAllEmployees(filter?: Employee) {
+    return this.http.post<Employee[]>(AppConfig.APP_SERVER_URL + 'api/Employee/All', filter, {headers: this.headers}).toPromise();
   }
 }

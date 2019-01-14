@@ -1,21 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Menu</a>
+  <a class="navbar-brand" routerLink="/">Заказы</a>
   <button aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
           data-target="#menu" data-toggle="collapse" type="button">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="menu">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/">Home</a>
-      <a class="nav-item nav-link" routerLink="/">Features</a>
-      <a class="nav-item nav-link" routerLink="/">Pricing</a>
+      <a class="nav-item nav-link" routerLink="/">По клиентам</a>
+      <a class="nav-item nav-link" routerLink="/employee">По менеджерам</a>
+      <a class="nav-item nav-link" routerLink="/product">По товарам</a>
     </div>
   </div>
   <form class="form-inline my-2 my-lg-0">
     <button [hidden]="authService.isLoggedIn()" class="btn btn-outline-primary mx-1" routerLink="/signup">Register
     </button>
     <button [hidden]="authService.isLoggedIn()" class="btn btn-outline-success" routerLink="/login">Sign in</button>
-    <span [hidden]="!authService.isLoggedIn()" class="badge badge-light">Hello, {{authService.getUserName()}}</span>
+    <h3 [hidden]="!authService.isLoggedIn()" class="badge badge-light">{{authService.getUserName()}}</h3>
     <button (click)="authService.logout()" [hidden]="!authService.isLoggedIn()" class="btn btn-outline-danger">Logout
     </button>
   </form>
